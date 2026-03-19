@@ -1,27 +1,84 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simulador de Estafas - Ciberseguridad</title>
+    <title>Simulador de Estafas - TalentoTech</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-    <div class="contenedor-celular">
-        
-        <div class="area-foto">
-            <img src="bienvenida.jpg" alt="Homer y Marge protegiendo" class="imagen-bienvenida">
+    <section id="paso-1" class="pantalla">
+        <div class="contenido-ajustado">
+            <img src="bienvenida.jpg" alt="Bienvenidos" class="img-principal">
+            <h1 class="texto-grande">¡Atención Ciudadano de Springfield!</h1>
+            <p class="subtitulo">Aprende a no meter la pata con los estafadores.</p>
+            <button class="btn-amarillo" onclick="irA(2)">¡Vamos Pá esa!</button>
         </div>
-        
-        <div class="pantalla-inicio">
-            <h1>¡Navega Seguro!</h1>
-            <p>Aprende con Homer y Marge a reconocer mensajes falsos de forma fácil y divertida.</p>
-            
-            <button class="boton-inicio">¡Empezar a Aprender!</button>
+    </section>
+
+    <section id="paso-2" class="pantalla oculto">
+        <div class="tarjeta-mision">
+            <h2 class="texto-gigante">⚠️ ¡D'oh! Misión Crítica</h2>
+            <p class="instruccion-pro">Has recibido un mensaje sospechoso. Tu misión es analizar cada detalle como un
+                inspector de seguridad nuclear.</p>
+            <p class="pregunta-climax">¿Te atreves a ver el peligro?</p>
+            <button class="btn-azul" onclick="irA(3)">¡Echemosle Ojo!</button>
         </div>
+    </section>
 
-    </div>
+    <section id="paso-3" class="pantalla oculto">
+        <div class="contenedor-simulador">
+            <h2 class="texto-grande">¡Analiza el mensaje, sinson!</h2>
+            <div class="marco-celular">
+                <img src="viviana1.jpeg" alt="Mensaje de estafa">
+            </div>
 
+            <div class="decisiones">
+                <h3 class="texto-medio">¿Qué vas a hacer? ¿Caer en la trampa o ser un genio como Lisa?</h3>
+                <div class="botones-grupo">
+                    <button class="btn-peligro-grande" onclick="finalizar('estafa')">¡Es una estafa! 🚩</button>
+                    <button class="btn-seguro-grande" onclick="finalizar('ignorar')">Parece legal... 🤔</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="paso-resultado" class="pantalla oculto">
+        <div id="tarjeta-resultado" class="tarjeta-resultado">
+            <h2 id="titulo-resultado" class="texto-gigante"></h2>
+            <p id="mensaje-resultado" class="instruccion-pro"></p>
+            <button class="btn-amarillo" onclick="location.reload()">¡Intentar de nuevo!</button>
+        </div>
+    </section>
+
+    <script>
+        function irA(paso) {
+            document.querySelectorAll('.pantalla').forEach(p => p.classList.add('oculto'));
+            const destino = (typeof paso === 'number') ? 'paso-' + paso : paso;
+            document.getElementById(destino).classList.remove('oculto');
+        }
+
+        function finalizar(decision) {
+            const titulo = document.getElementById('titulo-resultado');
+            const mensaje = document.getElementById('mensaje-resultado');
+            const tarjeta = document.getElementById('tarjeta-resultado');
+
+            if (decision === 'estafa') {
+                tarjeta.className = 'tarjeta-resultado exito';
+                titulo.innerText = "¡Eres un genio!";
+                mensaje.innerText = "Identificaste que el link era falso y el remitente sospechoso. ¡Ni el Sr. Burns podría engañarte hoy!";
+            } else {
+                tarjeta.className = 'tarjeta-resultado error';
+                titulo.innerText = "¡Ay caramba!";
+                mensaje.innerText = "Has caído en la trampa. Recuerda: las entidades oficiales nunca piden pagos urgentes por links de mensajes de texto.";
+            }
+
+            irA('paso-resultado');
+        }
+    </script>
 </body>
+
 </html>

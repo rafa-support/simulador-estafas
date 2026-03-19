@@ -1,83 +1,109 @@
-/* --- Estilos de Fondo y Base --- */
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #1a252f; /* Fondo oscuro para que resalte el celular */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
+/* ... (mantenemos los estilos anteriores y agregamos estos) ... */
+
+body,
+html {
     margin: 0;
+    padding: 0;
+    height: 100vh;
+    overflow: hidden;
+    font-family: 'Comic Sans MS', 'Chalkboard SE', sans-serif;
+    background-color: #1a252f;
+    color: white;
 }
 
-/* --- El Chasis del Celular --- */
-.contenedor-celular {
-    width: 350px;
-    height: 650px; /* Un poco más alto para dar aire al texto */
-    background-color: #fef9e7; /* Crema suave (menos brillo para los abuelos) */
-    border: 14px solid #1a1a1a;
-    border-radius: 50px;
-    box-shadow: 0 25px 50px rgba(0,0,0,0.6);
+.pantalla {
     display: flex;
     flex-direction: column;
-    overflow: hidden;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100%;
+    padding: 2vh;
     text-align: center;
 }
 
-/* --- Ajuste de la Imagen --- */
-.area-foto {
-    height: 340px;
-    width: 100%;
-    overflow: hidden;
-    border-bottom: 4px solid #f1c40f; /* Línea amarilla tipo Simpson */
+.oculto {
+    display: none !important;
 }
 
-.imagen-bienvenida {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+/* Tarjeta de Resultados Visual */
+.tarjeta-resultado {
+    padding: 40px;
+    border-radius: 40px;
+    max-width: 800px;
+    border: 10px solid white;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    transition: all 0.5s ease;
 }
 
-/* --- Textos Amigables y Legibles --- */
-.pantalla-inicio {
-    padding: 25px;
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
+/* Colores dinámicos */
+.exito {
+    background-color: #2ecc71;
+    /* Verde éxito */
+    box-shadow: 0 0 60px rgba(46, 204, 113, 0.6);
 }
 
-h1 {
-    color: #2c3e50;
-    font-size: 28px; /* Más grande para fácil lectura */
-    font-weight: 800;
-    margin: 0;
-    text-shadow: 1px 1px 0px #f1c40f; /* Sutil relieve amarillo */
+.error {
+    background-color: #e74c3c;
+    /* Rojo D'oh! */
+    box-shadow: 0 0 60px rgba(231, 76, 60, 0.6);
 }
 
-p {
-    font-size: 19px; /* Tamaño ideal para adultos mayores */
-    color: #444;
+/* Botones y Tipografía (Mismos tamaños grandes) */
+.texto-gigante {
+    font-size: 3rem;
+    margin-bottom: 2vh;
+}
+
+.instruccion-pro {
+    font-size: 1.8rem;
     line-height: 1.4;
-    font-weight: 500;
-    margin: 0;
+    margin-bottom: 4vh;
 }
 
-/* --- El Botón "Púlselo Aquí" --- */
-.boton-inicio {
-    background-color: #27ae60;
+.btn-amarillo {
+    background-color: #fed41d;
+    color: #000;
+    border: none;
+    padding: 20px 40px;
+    font-size: 1.6rem;
+    border-radius: 50px;
+    box-shadow: 0 8px 0 #b49710;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.btn-azul {
+    background-color: #3498db;
+    background-image: linear-gradient(to bottom, #3498db, #2980b9);
     color: white;
     border: none;
-    padding: 18px 35px;
-    font-size: 20px;
-    font-weight: bold;
-    border-radius: 30px;
+    padding: 20px 50px;
+    font-size: 1.6rem;
+    border-radius: 20px;
+    box-shadow: 0 8px 0 #1c5980;
     cursor: pointer;
-    box-shadow: 0 6px 0px #1e8449; /* Efecto 3D de botón real */
-    transition: all 0.2s;
+    font-weight: bold;
 }
 
-.boton-inicio:active {
-    transform: translateY(4px); /* Se hunde al presionarlo, muy intuitivo */
-    box-shadow: 0 2px 0px #1e8449;
+/* Imagen y Marco Celular */
+.img-principal {
+    max-height: 50vh;
+    border-radius: 20px;
+    border: 5px solid #fed41d;
+    margin-bottom: 2vh;
+}
+
+.marco-celular {
+    height: 45vh;
+    background: #000;
+    padding: 10px;
+    border-radius: 30px;
+    border: 4px solid #333;
+    display: inline-block;
+}
+
+.marco-celular img {
+    height: 100%;
+    border-radius: 20px;
 }
