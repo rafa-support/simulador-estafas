@@ -1,6 +1,7 @@
+/* --- Estilos de Fondo y Base --- */
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #2c3e50;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #1a252f; /* Fondo oscuro para que resalte el celular */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -8,62 +9,75 @@ body {
     margin: 0;
 }
 
+/* --- El Chasis del Celular --- */
 .contenedor-celular {
     width: 350px;
-    height: 600px;
-    background-color: white;
-    border: 12px solid #1a1a1a;
-    border-radius: 45px;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    height: 650px; /* Un poco más alto para dar aire al texto */
+    background-color: #fef9e7; /* Crema suave (menos brillo para los abuelos) */
+    border: 14px solid #1a1a1a;
+    border-radius: 50px;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.6);
     display: flex;
     flex-direction: column;
-    overflow: hidden; /* Mantiene todo dentro del borde negro */
+    overflow: hidden;
     text-align: center;
 }
 
+/* --- Ajuste de la Imagen --- */
 .area-foto {
-    height: 320px; /* FIJAMOS LA ALTURA DE LA IMAGEN */
+    height: 340px;
     width: 100%;
     overflow: hidden;
+    border-bottom: 4px solid #f1c40f; /* Línea amarilla tipo Simpson */
 }
 
 .imagen-bienvenida {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Esto hace que la imagen no se estire feo */
+    object-fit: cover;
 }
 
+/* --- Textos Amigables y Legibles --- */
 .pantalla-inicio {
-    padding: 20px;
+    padding: 25px;
     flex-grow: 1;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
 }
 
 h1 {
-    color: #4b0082;
-    font-size: 22px;
-    margin: 10px 0;
+    color: #2c3e50;
+    font-size: 28px; /* Más grande para fácil lectura */
+    font-weight: 800;
+    margin: 0;
+    text-shadow: 1px 1px 0px #f1c40f; /* Sutil relieve amarillo */
 }
 
 p {
-    font-size: 15px;
+    font-size: 19px; /* Tamaño ideal para adultos mayores */
     color: #444;
     line-height: 1.4;
+    font-weight: 500;
     margin: 0;
 }
 
+/* --- El Botón "Púlselo Aquí" --- */
 .boton-inicio {
     background-color: #27ae60;
     color: white;
     border: none;
-    padding: 15px 30px;
-    font-size: 18px;
+    padding: 18px 35px;
+    font-size: 20px;
     font-weight: bold;
-    border-radius: 25px;
+    border-radius: 30px;
     cursor: pointer;
-    margin-bottom: 10px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    box-shadow: 0 6px 0px #1e8449; /* Efecto 3D de botón real */
+    transition: all 0.2s;
+}
+
+.boton-inicio:active {
+    transform: translateY(4px); /* Se hunde al presionarlo, muy intuitivo */
+    box-shadow: 0 2px 0px #1e8449;
 }
