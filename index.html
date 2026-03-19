@@ -39,8 +39,8 @@
             <div class="decisiones">
                 <h3 class="texto-medio">¿Qué vas a hacer? ¿Caer en la trampa o ser un genio como Lisa?</h3>
                 <div class="botones-grupo">
-                    <button class="btn-peligro-grande" onclick="finalizar('estafa')">¡Es una estafa! 🚩</button>
-                    <button class="btn-seguro-grande" onclick="finalizar('ignorar')">Parece legal... 🤔</button>
+                    <button class="btn-vibrante btn-peligro" onclick="finalizar('estafa')">¡Es una estafa! 🚩</button>
+                    <button class="btn-vibrante btn-seguro" onclick="finalizar('ignorar')">Parece legal... 🤔</button>
                 </div>
             </div>
         </div>
@@ -55,12 +55,15 @@
     </section>
 
     <script>
+        // Función para cambiar entre pantallas
         function irA(paso) {
             document.querySelectorAll('.pantalla').forEach(p => p.classList.add('oculto'));
             const destino = (typeof paso === 'number') ? 'paso-' + paso : paso;
             document.getElementById(destino).classList.remove('oculto');
+            window.scrollTo(0, 0); // Vuelve arriba al cambiar de paso
         }
 
+        // Función para procesar la decisión final
         function finalizar(decision) {
             const titulo = document.getElementById('titulo-resultado');
             const mensaje = document.getElementById('mensaje-resultado');
@@ -75,10 +78,9 @@
                 titulo.innerText = "¡Ay caramba!";
                 mensaje.innerText = "Has caído en la trampa. Recuerda: las entidades oficiales nunca piden pagos urgentes por links de mensajes de texto.";
             }
-
             irA('paso-resultado');
         }
     </script>
 </body>
 
-</html>
+</html>ß
