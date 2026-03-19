@@ -22,10 +22,18 @@ body {
     text-align: center;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start; /* Imagen arriba, texto abajo */
+    overflow: hidden; /* Para que la imagen no se salga de los bordes redondeados */
+}
+
+.imagen-bienvenida {
+    width: 100%;
+    height: auto;
+    border-radius: 35px 35px 0 0; /* Redondeado solo arriba */
 }
 
 h1 {
     color: #4b0082;
     font-size: 24px;
+    margin-top: 20px;
 }
