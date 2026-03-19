@@ -55,27 +55,34 @@
     </section>
 
     <script>
-        // Función para cambiar entre pantallas
+        // 1. Cargamos los sonidos en la memoria del navegador
+        const sonidoAcierto = new Audio('acierto.mp3');
+        const sonidoError = new Audio('error.mp3');
+
         function irA(paso) {
             document.querySelectorAll('.pantalla').forEach(p => p.classList.add('oculto'));
             const destino = (typeof paso === 'number') ? 'paso-' + paso : paso;
             document.getElementById(destino).classList.remove('oculto');
-            window.scrollTo(0, 0); // Vuelve arriba al cambiar de paso
         }
 
-        // Función para procesar la decisión final
         function finalizar(decision) {
             const titulo = document.getElementById('titulo-resultado');
             const mensaje = document.getElementById('mensaje-resultado');
             const tarjeta = document.getElementById('tarjeta-resultado');
 
             if (decision === 'estafa') {
+                // Reproducimos el sonido de acierto
+                sonidoAcierto.play();
+
                 tarjeta.className = 'tarjeta-resultado exito';
-                titulo.innerText = "¡Eres un genio!";
+                titulo.innerText = "¡Ay caramba!";
                 mensaje.innerText = "Identificaste que el link era falso y el remitente sospechoso. ¡Ni el Sr. Burns podría engañarte hoy!";
             } else {
+                // Reproducimos el sonido de error
+                sonidoError.play();
+
                 tarjeta.className = 'tarjeta-resultado error';
-                titulo.innerText = "¡Ay caramba!";
+                titulo.innerText = "¡D'oh!";
                 mensaje.innerText = "Has caído en la trampa. Recuerda: las entidades oficiales nunca piden pagos urgentes por links de mensajes de texto.";
             }
             irA('paso-resultado');
