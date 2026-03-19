@@ -22,8 +22,8 @@
     <section id="paso-2" class="pantalla oculto">
         <div class="tarjeta-mision">
             <h2 class="texto-gigante">⚠️ ¡D'oh! Misión Crítica</h2>
-            <p class="instruccion-pro">Has recibido un mensaje sospechoso. Tu misión es analizar cada detalle como un
-                inspector de seguridad nuclear.</p>
+            <p class="instruccion-pro">Tu misión es analizar mensajes sospechosos como un experto en ciberseguridad para
+                salvar a tus vecinos.</p>
             <p class="pregunta-climax">¿Te atreves a ver el peligro?</p>
             <button class="btn-azul" onclick="irA(3)">¡Echemosle Ojo!</button>
         </div>
@@ -37,7 +37,7 @@
             </div>
 
             <div class="decisiones">
-                <h3 class="texto-medio">¿Qué vas a hacer? ¿Caer en la trampa o ser un genio como Lisa?</h3>
+                <h3 class="texto-medio">¿Qué vas a hacer?</h3>
                 <div class="botones-grupo">
                     <button class="btn-vibrante btn-peligro" onclick="gestionarDecisión('estafa')">¡Es una estafa!
                         🚩</button>
@@ -52,93 +52,99 @@
         <div id="tarjeta-resultado" class="tarjeta-resultado">
             <h2 id="titulo-resultado" class="texto-gigante"></h2>
             <div id="mensaje-resultado" class="instruccion-pro"></div>
-
-            <div id="controles-resultado" style="margin-top: 30px;">
-            </div>
+            <div id="controles-resultado" style="margin-top: 20px;"></div>
         </div>
     </section>
 
     <script>
-        // 1. Configuración de sonidos
         const sonidoAcierto = new Audio('acierto.mp3');
         const sonidoError = new Audio('error.mp3');
         let nivelActual = 1;
 
-        // 2. Navegación entre pantallas
         function irA(paso) {
             document.querySelectorAll('.pantalla').forEach(p => p.classList.add('oculto'));
             const destino = (typeof paso === 'number') ? 'paso-' + paso : paso;
             document.getElementById(destino).classList.remove('oculto');
         }
 
-        // 3. Lógica principal del simulador
         function gestionarDecisión(decisión) {
             const titulo = document.getElementById('titulo-resultado');
             const mensaje = document.getElementById('mensaje-resultado');
             const tarjeta = document.getElementById('tarjeta-resultado');
             const controles = document.getElementById('controles-resultado');
 
-            // --- NIVEL 1: VIVIANA (EL SMS DE HACIENDA) ---
+            // NIVEL 1: VIVIANA
             if (nivelActual === 1) {
                 if (decisión === 'estafa') {
                     sonidoAcierto.play();
                     tarjeta.className = 'tarjeta-resultado exito';
                     titulo.innerText = "¡Ay caramba!";
                     mensaje.innerHTML = `
-                        <strong>¡Nivel 1 Superado!</strong> Detectaste las señales de Viviana:<br><br>
-                        • <b>Link extraño:</b> No es un dominio oficial del gobierno.<br>
-                        • <b>Mensaje genérico:</b> No tiene tu nombre ni datos específicos.<br>
-                        • <b>Falsa urgencia:</b> Te presionan para "evitar cobros".
+                        <strong>¡Nivel 1 Superado!</strong> Detectaste las señales de **Viviana**: <br><br>
+                        • El link no es un dominio oficial (.gov.co).<br>
+                        • Las entidades no piden pagos por SMS.<br>
+                        • ¡Evitaste que robaran sus datos bancarios!
                     `;
                 } else {
                     sonidoError.play();
                     tarjeta.className = 'tarjeta-resultado error';
                     titulo.innerText = "¡D'oh!";
-                    mensaje.innerHTML = `
-                        <strong>¡Caíste en la trampa!</strong> Viviana explica que este SMS era falso:<br><br>
-                        • Las entidades oficiales no usan links de SMS para pagos.<br>
-                        • El mensaje busca suplantar a la Secretaría de Hacienda.<br>
-                        • ¡Nunca hagas clic en enlaces de mensajes desconocidos!
-                    `;
+                    mensaje.innerHTML = "<strong>¡Caíste!</strong> Viviana explica que este mensaje de Hacienda era un engaño para vaciar su cuenta.";
                 }
-                controles.innerHTML = `<button class="btn-amarillo" onclick="cargarNivel2()">Siguiente Desafío</button>`;
+                controles.innerHTML = `<button class="btn-amarillo" onclick="cargarNivel(2, 'miguel1.jpeg', '¡Analiza el juego de Miguel!')">Siguiente Desafío</button>`;
             }
 
-            // --- NIVEL 2: MIGUEL (EL JUEGO BLOCKRUST) ---
+            // NIVEL 2: MIGUEL
             else if (nivelActual === 2) {
-                // Para Miguel, la respuesta correcta es 'estafa' (es un juego señuelo)
                 if (decisión === 'estafa') {
                     sonidoAcierto.play();
                     tarjeta.className = 'tarjeta-resultado exito';
-                    titulo.innerText = "¡Ay caramba!";
+                    titulo.innerText = "¡Excelente!";
                     mensaje.innerHTML = `
-                        <strong>¡Increíble análisis!</strong> Tal como advirtió Miguel, BlockRust es un peligro:<br><br>
-                        • <b>Pocos jugadores:</b> Típico de juegos creados solo para infectar PCs.<br>
-                        • <b>Señuelo gratis:</b> Atrae gente para meter malware o robar datos de Steam.<br>
-                        • <b>Identidad falsa:</b> Usa sellos de "Recomendado" sin contexto real.
+                        <strong>¡Nivel 2 Superado!</strong> Como analizó **Miguel**, BlockRust era un peligro:<br><br>
+                        • Es un señuelo para instalar malware en Steam.<br>
+                        • Busca robar cookies de sesión y contraseñas.<br>
+                        • ¡Salvaste la PC de Miguel de un virus!
                     `;
                 } else {
                     sonidoError.play();
                     tarjeta.className = 'tarjeta-resultado error';
-                    titulo.innerText = "¡D'oh!";
+                    titulo.innerText = "¡Rayos!";
+                    mensaje.innerHTML = "<strong>¡Virus instalado!</strong> Miguel confirma que el instalador robó toda la información del equipo.";
+                }
+                controles.innerHTML = `<button class="btn-amarillo" onclick="cargarNivel(3, 'Rafa.jpg', '¡Analiza el bono de Gil!')">Siguiente Desafío</button>`;
+            }
+
+            // NIVEL 3: RAFA (GIL GUNDERSON)
+            else if (nivelActual === 3) {
+                if (decisión === 'estafa') {
+                    sonidoAcierto.play();
+                    tarjeta.className = 'tarjeta-resultado exito';
+                    titulo.innerText = "¡Genio Total!";
                     mensaje.innerHTML = `
-                        <strong>¡Te engañaron los gráficos!</strong> Miguel confirma que es una estafa:<br><br>
-                        • Busca robar cookies de sesión y credenciales de pago.<br>
-                        • Es un vector de ataque que se activa con actualizaciones futuras.<br>
-                        • ¡Si no conoces al desarrollador y hay pocos jugadores, huye!
+                        <strong>¡Nivel 3 Superado!</strong> Gracias al reto de **Rafa**, Gil aprendió la lección:<br><br>
+                        • <b>Enlace Falso:</b> El dominio .xyz es usado por estafadores.<br>
+                        • <b>Canal Oficial:</b> Los subsidios se consultan en páginas oficiales, no por SMS.<br>
+                        • <b>Protección:</b> ¡Gil no perdió sus ahorros hoy!
+                    `;
+                } else {
+                    sonidoError.play();
+                    tarjeta.className = 'tarjeta-resultado error';
+                    titulo.innerText = "¡Pobre Gil!";
+                    mensaje.innerHTML = `
+                        <strong>¡Estafado!</strong> Aunque **Rafa** diseñó este reto para advertirte, Gil entregó su clave y le vaciaron su Nequi.
                     `;
                 }
-                controles.innerHTML = `<button class="btn-amarillo" onclick="location.reload()">Reiniciar Entrenamiento</button>`;
+                controles.innerHTML = `<button class="btn-amarillo" onclick="location.reload()">Reiniciar Simulador</button>`;
             }
 
             irA('paso-resultado');
         }
 
-        // 4. Cambio de nivel
-        function cargarNivel2() {
-            nivelActual = 2;
-            document.getElementById('imagen-celular').src = 'miguel1.jpeg';
-            document.getElementById('titulo-simulador').innerText = "¡Analiza el juego de Miguel!";
+        function cargarNivel(nivel, imagen, tituloSim) {
+            nivelActual = nivel;
+            document.getElementById('imagen-celular').src = imagen;
+            document.getElementById('titulo-simulador').innerText = tituloSim;
             irA(3);
         }
     </script>
