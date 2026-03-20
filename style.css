@@ -50,20 +50,13 @@ html {
     line-height: 1.2;
 }
 
-/* --- ARREGLO DE ESPACIADO (PARA QUE NO SE MONTEN) --- */
-.subtitulo {
+/* --- ARREGLO DE BOTONES MONTADOS (EL MARGEN SAGRADO) --- */
+.subtitulo,
+.pregunta-climax {
     font-size: 1.4rem;
     color: #bdc3c7;
     margin-bottom: 60px;
-    /* Espacio extra para el botón */
-}
-
-.pregunta-climax {
-    font-size: 1.8rem;
-    color: #fed41d;
-    font-weight: bold;
-    margin-bottom: 60px;
-    /* Espacio extra para el botón azul */
+    /* Espacio de 60px para que el botón respire */
 }
 
 .instruccion-pro {
@@ -72,7 +65,7 @@ html {
     line-height: 1.4;
     margin: 0 auto;
     text-align: left;
-    /* Para legibilidad de viñetas */
+    /* Para que las viñetas se vean alineadas */
 }
 
 /* --- BOTONES --- */
@@ -129,10 +122,10 @@ button:hover {
     background: #2ecc71;
 }
 
-/* --- IMÁGENES Y MARCOS (TAMAÑO CONTROLADO) --- */
+/* --- IMÁGENES CONTROLADAS (PARA NO EMPUJAR BOTONES) --- */
 .img-principal {
     max-height: 40vh;
-    /* Para que no empuje los botones fuera de la vista */
+    /* Altura máxima controlada */
     border-radius: 20px;
     border: 5px solid #fed41d;
     margin-bottom: 25px;
@@ -158,8 +151,8 @@ button:hover {
 .tarjeta-resultado {
     padding: 40px;
     border-radius: 40px;
-    max-width: 850px;
     border: 8px solid white;
+    max-width: 850px;
 }
 
 .exito {
@@ -172,7 +165,7 @@ button:hover {
     box-shadow: 0 0 50px rgba(231, 76, 60, 0.5);
 }
 
-/* --- MÓVIL --- */
+/* --- RESPONSIVE MÓVIL --- */
 @media (max-width: 600px) {
     .texto-gigante {
         font-size: 1.8rem;
@@ -180,7 +173,7 @@ button:hover {
 
     .img-principal,
     .marco-celular {
-        height: 30vh;
+        height: 32vh;
     }
 
     .botones-grupo {

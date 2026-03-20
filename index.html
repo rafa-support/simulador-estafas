@@ -80,7 +80,7 @@
                     tarjeta.className = 'tarjeta-resultado exito';
                     titulo.innerText = "¡Ay caramba!";
                     mensaje.innerHTML = `
-                        <strong>¡Nivel 1 Superado!</strong> Detectaste las señales de Viviana:<br><br>
+                        <strong>¡Nivel 1 Superado!</strong> Detectaste las señales de **Viviana**:<br><br>
                         • <b>Link extraño:</b> No es un dominio oficial del gobierno.<br>
                         • <b>Mensaje genérico:</b> No tiene tu nombre ni datos específicos.<br>
                         • <b>Falsa urgencia:</b> Te presionan para "evitar cobros".
@@ -90,7 +90,7 @@
                     tarjeta.className = 'tarjeta-resultado error';
                     titulo.innerText = "¡D'oh!";
                     mensaje.innerHTML = `
-                        <strong>¡Caíste en la trampa!</strong> Viviana explica que este SMS era falso:<br><br>
+                        <strong>¡Caíste en la trampa!</strong> **Viviana** explica que este SMS era falso:<br><br>
                         • Las entidades oficiales no usan links de SMS para pagos.<br>
                         • El mensaje busca suplantar a la Secretaría de Hacienda.<br>
                         • ¡Nunca hagas clic en enlaces de mensajes desconocidos!
@@ -104,28 +104,28 @@
                 if (decisión === 'estafa') {
                     sonidoAcierto.play();
                     tarjeta.className = 'tarjeta-resultado exito';
-                    titulo.innerText = "¡Excelente!";
+                    titulo.innerText = "¡Ay caramba!";
                     mensaje.innerHTML = `
-                        <strong>¡Increíble análisis!</strong> Tal como advirtió Miguel, BlockRust es un peligro:<br><br>
-                        • <b>Pocos jugadores:</b> Típico de juegos creados para infectar PCs.<br>
+                        <strong>¡Increíble análisis!</strong> Tal como advirtió **Miguel**, BlockRust es un peligro:<br><br>
+                        • <b>Pocos jugadores:</b> Típico de juegos creados solo para infectar PCs.<br>
                         • <b>Señuelo gratis:</b> Atrae gente para robar datos de Steam.<br>
-                        • <b>Identidad falsa:</b> Usa sellos de recomendación sin contexto real.
+                        • <b>Identidad falsa:</b> Usa sellos de "Recomendado" sin contexto real.
                     `;
                 } else {
                     sonidoError.play();
                     tarjeta.className = 'tarjeta-resultado error';
                     titulo.innerText = "¡D'oh!";
                     mensaje.innerHTML = `
-                        <strong>¡Te engañaron los gráficos!</strong> Miguel confirma que es una estafa:<br><br>
+                        <strong>¡Te engañaron los gráficos!</strong> **Miguel** confirma que es una estafa:<br><br>
                         • Busca robar cookies de sesión y credenciales de pago.<br>
                         • Es un vector de ataque que se activa con actualizaciones futuras.<br>
-                        • ¡Si no conoces al desarrollador, huye!
+                        • ¡Si no conoces al desarrollador y hay pocos jugadores, huye!
                     `;
                 }
                 controles.innerHTML = `<button class="btn-amarillo" onclick="cargarNivel(3, 'Rafa.jpg', '¡Analiza el bono de Gil!')">Siguiente Desafío</button>`;
             }
 
-            // --- NIVEL 3: RAFA (GIL GUNDERSON) ---
+            // --- NIVEL 3: RAFA ---
             else if (nivelActual === 3) {
                 if (decisión === 'estafa') {
                     sonidoAcierto.play();
@@ -133,16 +133,19 @@
                     titulo.innerText = "¡Genio Total!";
                     mensaje.innerHTML = `
                         <strong>¡Nivel 3 Superado!</strong> Gracias al análisis de **Rafa**, Gil aprendió que:<br><br>
-                        • <b>Dominio .xyz:</b> Es un indicador común de sitios de estafa masiva.<br>
+                        • <b>Dominio .xyz:</b> Es la bandera roja número uno de los estafadores.<br>
                         • <b>Gobernación de Cundinamarca:</b> Las entidades no regalan bonos por SMS.<br>
-                        • <b>Protección:</b> ¡Evitaste que Gil perdiera sus ahorros de Daviplata!
+                        • <b>Protección:</b> ¡Evitaste que Gil entregara su clave de Daviplata!
                     `;
                 } else {
                     sonidoError.play();
                     tarjeta.className = 'tarjeta-resultado error';
                     titulo.innerText = "¡Pobre Gil!";
                     mensaje.innerHTML = `
-                        <strong>¡Estafado!</strong> Aunque **Rafa** diseñó este reto para advertirte, Gil entregó sus datos y le vaciaron la cuenta por el bono falso.
+                        <strong>¡Estafado!</strong> Aunque **Rafa** diseñó este reto para advertirte, Gil cayó en todas las trampas:<br><br>
+                        • <b>Link trampa:</b> Gil no notó que el sitio web era una copia pirata.<br>
+                        • <b>Falsa urgencia:</b> Creyó que el bono de $500.000 expiraba hoy mismo.<br>
+                        • <b>Error fatal:</b> Entregó sus datos personales y ahora le vaciaron la cuenta.
                     `;
                 }
                 controles.innerHTML = `<button class="btn-amarillo" onclick="location.reload()">Reiniciar Entrenamiento</button>`;
