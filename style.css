@@ -50,13 +50,20 @@ html {
     line-height: 1.2;
 }
 
-/* --- ARREGLO DE BOTONES MONTADOS (EL MARGEN SAGRADO) --- */
-.subtitulo,
-.pregunta-climax {
+/* --- ARREGLO DE ESPACIADO (PARA QUE NO SE MONTEN) --- */
+.subtitulo {
     font-size: 1.4rem;
     color: #bdc3c7;
     margin-bottom: 60px;
-    /* Espacio de 60px para que el botón respire */
+    /* Suficiente espacio para que no pegue con el botón */
+}
+
+.pregunta-climax {
+    font-size: 1.8rem;
+    color: #fed41d;
+    font-weight: bold;
+    margin-bottom: 60px;
+    /* Suficiente espacio para el botón azul */
 }
 
 .instruccion-pro {
@@ -65,7 +72,7 @@ html {
     line-height: 1.4;
     margin: 0 auto;
     text-align: left;
-    /* Para que las viñetas se vean alineadas */
+    /* Alineación para las viñetas */
 }
 
 /* --- BOTONES --- */
@@ -122,10 +129,10 @@ button:hover {
     background: #2ecc71;
 }
 
-/* --- IMÁGENES CONTROLADAS (PARA NO EMPUJAR BOTONES) --- */
+/* --- IMÁGENES CONTROLADAS --- */
 .img-principal {
     max-height: 40vh;
-    /* Altura máxima controlada */
+    /* RESTRICCIÓN PARA QUE EL BOTÓN SIEMPRE SE VEA */
     border-radius: 20px;
     border: 5px solid #fed41d;
     margin-bottom: 25px;
@@ -165,7 +172,7 @@ button:hover {
     box-shadow: 0 0 50px rgba(231, 76, 60, 0.5);
 }
 
-/* --- RESPONSIVE MÓVIL --- */
+/* --- RESPONSIVE --- */
 @media (max-width: 600px) {
     .texto-gigante {
         font-size: 1.8rem;

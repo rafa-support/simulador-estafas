@@ -125,7 +125,7 @@
                 controles.innerHTML = `<button class="btn-amarillo" onclick="cargarNivel(3, 'Rafa.jpg', '¡Analiza el bono de Gil!')">Siguiente Desafío</button>`;
             }
 
-            // --- NIVEL 3: RAFA ---
+            // --- NIVEL 3: RAFA (GIL) ---
             else if (nivelActual === 3) {
                 if (decisión === 'estafa') {
                     sonidoAcierto.play();
@@ -146,6 +146,29 @@
                         • <b>Link trampa:</b> Gil no notó que el sitio web era una copia pirata.<br>
                         • <b>Falsa urgencia:</b> Creyó que el bono de $500.000 expiraba hoy mismo.<br>
                         • <b>Error fatal:</b> Entregó sus datos personales y ahora le vaciaron la cuenta.
+                    `;
+                }
+                controles.innerHTML = `<button class="btn-amarillo" onclick="cargarNivel(4, 'karen.jpeg', '¡Analiza el email de Karen!')">Último Desafío</button>`;
+            }
+
+            // --- NIVEL 4: KAREN ---
+            else if (nivelActual === 4) {
+                if (decisión === 'estafa') {
+                    sonidoAcierto.play();
+                    tarjeta.className = 'tarjeta-resultado exito';
+                    titulo.innerText = "¡Nivel Maestro!";
+                    mensaje.innerHTML = `
+                        <strong>¡Simulador Completado!</strong> Detectaste el Phishing para **Karen**:<br><br>
+                        • <b>Remitente sospechoso:</b> El email "facturas@expresspapeleria.com" no es de la AFP.<br>
+                        • <b>Ingeniería Social:</b> Usan la "Suspensión de fondo de retiro" para causar pánico.<br>
+                        • <b>Validación:</b> ¡Evitaste que Karen entregara sus credenciales de empleado!
+                    `;
+                } else {
+                    sonidoError.play();
+                    tarjeta.className = 'tarjeta-resultado error';
+                    titulo.innerText = "¡D'oh!";
+                    mensaje.innerHTML = `
+                        <strong>¡Final Fallido!</strong> Karen hizo clic para "Validar Datos" y ahora los delincuentes tienen su usuario y contraseña corporativa.
                     `;
                 }
                 controles.innerHTML = `<button class="btn-amarillo" onclick="location.reload()">Reiniciar Entrenamiento</button>`;
