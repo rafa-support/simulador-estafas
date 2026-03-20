@@ -1,4 +1,4 @@
-/* --- CONFIGURACIÓN GENERAL --- */
+/* --- CONFIGURACIÓN BASE --- */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -36,7 +36,7 @@ html {
     color: #bdc3c7;
 }
 
-/* --- RESTRICCIÓN DE ALTURA 40VH (PARA S25 ULTRA) --- */
+/* --- RESTRICCIÓN DE ALTURA 40VH --- */
 .img-principal {
     max-height: 40vh;
     border-radius: 20px;
@@ -60,7 +60,7 @@ html {
     object-fit: cover;
 }
 
-/* --- BOTONES VIBRANTES (EL REGRESO) --- */
+/* --- BOTONES VIBRANTES --- */
 .botones-grupo {
     display: flex;
     gap: 25px;
@@ -77,10 +77,9 @@ html {
     cursor: pointer;
     font-family: inherit;
     font-weight: bold;
-    transition: transform 0.1s;
-    /* Sombras 3D y brillo interno que olvidé */
     box-shadow: 0 10px 0 rgba(0, 0, 0, 0.5), inset 0 2px 5px rgba(255, 255, 255, 0.3);
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    transition: transform 0.1s;
 }
 
 .btn-peligro {
@@ -93,10 +92,9 @@ html {
 
 .btn-vibrante:active {
     transform: translateY(4px);
-    box-shadow: 0 5px 0 rgba(0, 0, 0, 0.5), inset 0 2px 5px rgba(255, 255, 255, 0.3);
+    box-shadow: 0 5px 0 rgba(0, 0, 0, 0.5);
 }
 
-/* --- BOTONES DE INTERFAZ --- */
 .btn-amarillo {
     background-color: #fed41d;
     color: #000;
@@ -106,7 +104,6 @@ html {
     box-shadow: 0 8px 0 #b49710;
     border: none;
     cursor: pointer;
-    font-family: inherit;
     font-weight: bold;
 }
 
@@ -119,7 +116,6 @@ html {
     box-shadow: 0 8px 0 #1c5980;
     border: none;
     cursor: pointer;
-    font-family: inherit;
     font-weight: bold;
 }
 
@@ -153,16 +149,4 @@ html {
     line-height: 1.4;
     margin: 0 auto;
     text-align: left;
-}
-
-@media (max-width: 600px) {
-    .botones-grupo {
-        flex-direction: column;
-        width: 100%;
-        align-items: center;
-    }
-
-    .btn-vibrante {
-        width: 90%;
-    }
 }

@@ -23,7 +23,7 @@
         <div class="tarjeta-mision">
             <h2 class="texto-gigante">⚠️ ¡D'oh! Misión Crítica</h2>
             <p class="instruccion-pro">Analiza cada detalle como un inspector de seguridad nuclear para salvar a tus
-                vecinos.</p>
+                vecinos de los delincuentes digitales.</p>
             <p class="pregunta-climax">¿Te atreves a ver el peligro?</p>
             <button class="btn-azul" onclick="irA(3)">¡Echemosle Ojo!</button>
         </div>
@@ -86,31 +86,35 @@
                 titulo.innerText = "¡D'oh!";
             }
 
-            if (nivelActual === 1) { // VIVIANA
+            // --- NIVEL 1: VIVIANA ---
+            if (nivelActual === 1) {
                 mensaje.innerHTML = esCorrecto ?
-                    `<strong>¡Nivel 1 Superado!</strong> Detectaste las señales de **Viviana**:<br><br>• <b>Link extraño:</b> No es oficial.<br>• <b>Mensaje genérico:</b> No tiene tus datos.` :
-                    `<strong>¡Caíste!</strong> **Viviana** explica que Hacienda no usa links por SMS para cobros.`;
-                controles.innerHTML = `<p class="puntaje-text">Aciertos: ${aciertos}/${totalNiveles}</p><button class="btn-amarillo" onclick="cargarNivel(2, 'miguel1.jpeg', '¡Analiza el juego de Miguel!')">Siguiente</button>`;
+                    `<strong>¡Nivel 1 Superado!</strong> Detectaste las señales de **Viviana**:<br><br>• <b>Link extraño:</b> No es un dominio oficial .gov.co.<br>• <b>Mensaje genérico:</b> No tiene tu nombre.<br>• <b>Falsa urgencia:</b> Te presionan para evitar cobros.` :
+                    `<strong>¡Caíste en la trampa!</strong> **Viviana** explica que este SMS era falso:<br><br>• Las entidades oficiales no usan links de SMS para pagos.<br>• El mensaje busca suplantar a la Secretaría de Hacienda.`;
+                controles.innerHTML = `<p class="puntaje-text">Aciertos: ${aciertos}/${totalNiveles}</p><button class="btn-amarillo" onclick="cargarNivel(2, 'miguel1.jpeg', '¡Analiza el juego de Miguel!')">Siguiente Desafío</button>`;
             }
-            else if (nivelActual === 2) { // MIGUEL
+            // --- NIVEL 2: MIGUEL ---
+            else if (nivelActual === 2) {
                 mensaje.innerHTML = esCorrecto ?
-                    `<strong>¡Increíble!</strong> **Miguel** advirtió que BlockRust era malware:<br><br>• <b>Señuelo gratis:</b> Para robar cookies de Steam.<br>• <b>Virus:</b> Roba tus credenciales.` :
-                    `<strong>¡Virus instalado!</strong> **Miguel** confirma que el instalador robó tu información bancaria.`;
-                controles.innerHTML = `<p class="puntaje-text">Aciertos: ${aciertos}/${totalNiveles}</p><button class="btn-amarillo" onclick="cargarNivel(3, 'Rafa.jpg', '¡Analiza el bono de Gil!')">Siguiente</button>`;
+                    `<strong>¡Increíble análisis!</strong> Tal como advirtió **Miguel**, BlockRust es un peligro:<br><br>• <b>Pocos jugadores:</b> Típico de juegos creados solo para infectar PCs.<br>• <b>Señuelo gratis:</b> Atrae gente para robar datos de Steam.` :
+                    `<strong>¡Virus detectado!</strong> **Miguel** confirma que es una estafa:<br><br>• Busca robar cookies de sesión y credenciales de pago.<br>• El instalador infectó tu equipo al hacer clic.`;
+                controles.innerHTML = `<p class="puntaje-text">Aciertos: ${aciertos}/${totalNiveles}</p><button class="btn-amarillo" onclick="cargarNivel(3, 'Rafa.jpg', '¡Analiza el bono de Gil!')">Siguiente Desafío</button>`;
             }
-            else if (nivelActual === 3) { // RAFA (GIL)
+            // --- NIVEL 3: RAFA (GIL) ---
+            else if (nivelActual === 3) {
                 mensaje.innerHTML = esCorrecto ?
-                    `<strong>¡Genio!</strong> Gracias al análisis de **Rafa**, Gil aprendió:<br><br>• <b>Dominio .xyz:</b> Es una estafa clara.<br>• <b>Gobernación:</b> No regalan bonos por SMS.` :
-                    `<strong>¡Estafado!</strong> Gil entregó sus datos por el bono falso de **Rafa**. ¡Vaciaron su cuenta!`;
-                controles.innerHTML = `<p class="puntaje-text">Aciertos: ${aciertos}/${totalNiveles}</p><button class="btn-amarillo" onclick="cargarNivel(4, 'karen.jpeg', '¡Analiza el email de Karen!')">Último Reto</button>`;
+                    `<strong>¡Genio Total!</strong> Gracias al análisis de **Rafa**, Gil aprendió que:<br><br>• <b>Dominio .xyz:</b> Es la bandera roja número uno de los estafadores.<br>• <b>Gobernación:</b> Las entidades no regalan bonos por SMS.` :
+                    `<strong>¡Estafado!</strong> Aunque **Rafa** diseñó este reto para advertirte, Gil entregó sus datos por el bono falso de Cundinamarca y le vaciaron la cuenta.`;
+                controles.innerHTML = `<p class="puntaje-text">Aciertos: ${aciertos}/${totalNiveles}</p><button class="btn-amarillo" onclick="cargarNivel(4, 'karen.jpeg', '¡Analiza el email de Karen!')">Último Desafío</button>`;
             }
-            else if (nivelActual === 4) { // KAREN + CIERRE
+            // --- NIVEL 4: KAREN + CIERRE ---
+            else if (nivelActual === 4) {
                 if (aciertos === 4) {
                     titulo.innerText = "¡Héroe de Springfield!";
-                    mensaje.innerHTML = `<strong>Puntaje Perfecto: ${aciertos}/${totalNiveles}</strong><br><br>¡Felicidades! Gracias al equipo <b>Bunny Bytes G2</b> (Dairo Rafael, Alejandra, Jhosep, Miguel, David y Santiago) ahora eres un experto protegiendo tus datos.`;
+                    mensaje.innerHTML = `<strong>Puntaje Perfecto: ${aciertos}/${totalNiveles}</strong><br><br>Detectaste el Phishing de **Karen**. Gracias al equipo <b>Bunny Bytes G2</b> (Dairo Rafael, Alejandra, Jhosep, Miguel, David y Santiago) ahora eres un experto protegiendo tus datos.`;
                 } else {
-                    titulo.innerText = "¡Hay que estudiar!";
-                    mensaje.innerHTML = `<strong>Puntaje: ${aciertos}/${totalNiveles}</strong><br><br>Caíste en algunas trampas. Te recomendamos el curso de <b>Ciberseguridad de TALENTO TECH</b>. ¡Protégete junto a Rafa, Alejandra, Jhosep, Karen, Miguel, David y Santiago!`;
+                    titulo.innerText = "¡D'oh! Hay que entrenar";
+                    mensaje.innerHTML = `<strong>Puntaje: ${aciertos}/${totalNiveles}</strong><br><br>Caíste en algunas trampas de Phishing. Te recomendamos tomar un curso de <b>Ciberseguridad con TALENTO TECH</b>. ¡Protégete junto a Rafa, Alejandra, Jhosep, Karen, Miguel, David y Santiago!`;
                 }
                 controles.innerHTML = `<button class="btn-amarillo" onclick="location.reload()">Reiniciar Simulador</button>`;
             }
@@ -126,4 +130,4 @@
     </script>
 </body>
 
-</html>ß
+</html>
