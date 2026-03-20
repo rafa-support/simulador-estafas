@@ -22,8 +22,8 @@
     <section id="paso-2" class="pantalla oculto">
         <div class="tarjeta-mision">
             <h2 class="texto-gigante">⚠️ ¡D'oh! Misión Crítica</h2>
-            <p class="instruccion-pro">Has recibido un mensaje sospechoso. Tu misión es analizar cada detalle como un
-                inspector de seguridad nuclear.</p>
+            <p class="instruccion-pro">Analiza cada detalle como un inspector de seguridad nuclear para salvar a tus
+                vecinos.</p>
             <p class="pregunta-climax">¿Te atreves a ver el peligro?</p>
             <button class="btn-azul" onclick="irA(3)">¡Echemosle Ojo!</button>
         </div>
@@ -35,7 +35,6 @@
             <div class="marco-celular">
                 <img src="viviana1.jpeg" id="imagen-celular" alt="Imagen de análisis">
             </div>
-
             <div class="decisiones">
                 <h3 class="texto-medio">¿Qué vas a hacer? ¿Caer en la trampa o ser un genio como Lisa?</h3>
                 <div class="botones-grupo">
@@ -60,6 +59,8 @@
         const sonidoAcierto = new Audio('acierto.mp3');
         const sonidoError = new Audio('error.mp3');
         let nivelActual = 1;
+        let aciertos = 0;
+        const totalNiveles = 4;
 
         function irA(paso) {
             document.querySelectorAll('.pantalla').forEach(p => p.classList.add('oculto'));
@@ -73,117 +74,56 @@
             const tarjeta = document.getElementById('tarjeta-resultado');
             const controles = document.getElementById('controles-resultado');
 
-            // --- NIVEL 1: VIVIANA ---
-            if (nivelActual === 1) {
-                if (decisión === 'estafa') {
-                    sonidoAcierto.play();
-                    tarjeta.className = 'tarjeta-resultado exito';
-                    titulo.innerText = "¡Ay caramba!";
-                    mensaje.innerHTML = `
-                        <strong>¡Nivel 1 Superado!</strong> Detectaste las señales de **Viviana**:<br><br>
-                        • <b>Link extraño:</b> No es un dominio oficial del gobierno.<br>
-                        • <b>Mensaje genérico:</b> No tiene tu nombre ni datos específicos.<br>
-                        • <b>Falsa urgencia:</b> Te presionan para "evitar cobros".
-                    `;
-                } else {
-                    sonidoError.play();
-                    tarjeta.className = 'tarjeta-resultado error';
-                    titulo.innerText = "¡D'oh!";
-                    mensaje.innerHTML = `
-                        <strong>¡Caíste en la trampa!</strong> **Viviana** explica que este SMS era falso:<br><br>
-                        • Las entidades oficiales no usan links de SMS para pagos.<br>
-                        • El mensaje busca suplantar a la Secretaría de Hacienda.<br>
-                        • ¡Nunca hagas clic en enlaces de mensajes desconocidos!
-                    `;
-                }
-                controles.innerHTML = `<button class="btn-amarillo" onclick="cargarNivel(2, 'miguel1.jpeg', '¡Analiza el juego de Miguel!')">Siguiente Desafío</button>`;
+            const esCorrecto = (decisión === 'estafa');
+            if (esCorrecto) {
+                aciertos++;
+                sonidoAcierto.play();
+                tarjeta.className = 'tarjeta-resultado exito';
+                titulo.innerText = "¡Ay caramba!";
+            } else {
+                sonidoError.play();
+                tarjeta.className = 'tarjeta-resultado error';
+                titulo.innerText = "¡D'oh!";
             }
 
-            // --- NIVEL 2: MIGUEL ---
-            else if (nivelActual === 2) {
-                if (decisión === 'estafa') {
-                    sonidoAcierto.play();
-                    tarjeta.className = 'tarjeta-resultado exito';
-                    titulo.innerText = "¡Ay caramba!";
-                    mensaje.innerHTML = `
-                        <strong>¡Increíble análisis!</strong> Tal como advirtió **Miguel**, BlockRust es un peligro:<br><br>
-                        • <b>Pocos jugadores:</b> Típico de juegos creados solo para infectar PCs.<br>
-                        • <b>Señuelo gratis:</b> Atrae gente para robar datos de Steam.<br>
-                        • <b>Identidad falsa:</b> Usa sellos de "Recomendado" sin contexto real.
-                    `;
-                } else {
-                    sonidoError.play();
-                    tarjeta.className = 'tarjeta-resultado error';
-                    titulo.innerText = "¡D'oh!";
-                    mensaje.innerHTML = `
-                        <strong>¡Te engañaron los gráficos!</strong> **Miguel** confirma que es una estafa:<br><br>
-                        • Busca robar cookies de sesión y credenciales de pago.<br>
-                        • Es un vector de ataque que se activa con actualizaciones futuras.<br>
-                        • ¡Si no conoces al desarrollador y hay pocos jugadores, huye!
-                    `;
-                }
-                controles.innerHTML = `<button class="btn-amarillo" onclick="cargarNivel(3, 'Rafa.jpg', '¡Analiza el bono de Gil!')">Siguiente Desafío</button>`;
+            if (nivelActual === 1) { // VIVIANA
+                mensaje.innerHTML = esCorrecto ?
+                    `<strong>¡Nivel 1 Superado!</strong> Detectaste las señales de **Viviana**:<br><br>• <b>Link extraño:</b> No es oficial.<br>• <b>Mensaje genérico:</b> No tiene tus datos.` :
+                    `<strong>¡Caíste!</strong> **Viviana** explica que Hacienda no usa links por SMS para cobros.`;
+                controles.innerHTML = `<p class="puntaje-text">Aciertos: ${aciertos}/${totalNiveles}</p><button class="btn-amarillo" onclick="cargarNivel(2, 'miguel1.jpeg', '¡Analiza el juego de Miguel!')">Siguiente</button>`;
             }
-
-            // --- NIVEL 3: RAFA (GIL) ---
-            else if (nivelActual === 3) {
-                if (decisión === 'estafa') {
-                    sonidoAcierto.play();
-                    tarjeta.className = 'tarjeta-resultado exito';
-                    titulo.innerText = "¡Genio Total!";
-                    mensaje.innerHTML = `
-                        <strong>¡Nivel 3 Superado!</strong> Gracias al análisis de **Rafa**, Gil aprendió que:<br><br>
-                        • <b>Dominio .xyz:</b> Es la bandera roja número uno de los estafadores.<br>
-                        • <b>Gobernación de Cundinamarca:</b> Las entidades no regalan bonos por SMS.<br>
-                        • <b>Protección:</b> ¡Evitaste que Gil entregara su clave de Daviplata!
-                    `;
-                } else {
-                    sonidoError.play();
-                    tarjeta.className = 'tarjeta-resultado error';
-                    titulo.innerText = "¡Pobre Gil!";
-                    mensaje.innerHTML = `
-                        <strong>¡Estafado!</strong> Aunque **Rafa** diseñó este reto para advertirte, Gil cayó en todas las trampas:<br><br>
-                        • <b>Link trampa:</b> Gil no notó que el sitio web era una copia pirata.<br>
-                        • <b>Falsa urgencia:</b> Creyó que el bono de $500.000 expiraba hoy mismo.<br>
-                        • <b>Error fatal:</b> Entregó sus datos personales y ahora le vaciaron la cuenta.
-                    `;
-                }
-                controles.innerHTML = `<button class="btn-amarillo" onclick="cargarNivel(4, 'karen.jpeg', '¡Analiza el email de Karen!')">Último Desafío</button>`;
+            else if (nivelActual === 2) { // MIGUEL
+                mensaje.innerHTML = esCorrecto ?
+                    `<strong>¡Increíble!</strong> **Miguel** advirtió que BlockRust era malware:<br><br>• <b>Señuelo gratis:</b> Para robar cookies de Steam.<br>• <b>Virus:</b> Roba tus credenciales.` :
+                    `<strong>¡Virus instalado!</strong> **Miguel** confirma que el instalador robó tu información bancaria.`;
+                controles.innerHTML = `<p class="puntaje-text">Aciertos: ${aciertos}/${totalNiveles}</p><button class="btn-amarillo" onclick="cargarNivel(3, 'Rafa.jpg', '¡Analiza el bono de Gil!')">Siguiente</button>`;
             }
-
-            // --- NIVEL 4: KAREN ---
-            else if (nivelActual === 4) {
-                if (decisión === 'estafa') {
-                    sonidoAcierto.play();
-                    tarjeta.className = 'tarjeta-resultado exito';
-                    titulo.innerText = "¡Nivel Maestro!";
-                    mensaje.innerHTML = `
-                        <strong>¡Simulador Completado!</strong> Detectaste el Phishing para **Karen**:<br><br>
-                        • <b>Remitente sospechoso:</b> El email "facturas@expresspapeleria.com" no es de la AFP.<br>
-                        • <b>Ingeniería Social:</b> Usan la "Suspensión de fondo de retiro" para causar pánico.<br>
-                        • <b>Validación:</b> ¡Evitaste que Karen entregara sus credenciales de empleado!
-                    `;
-                } else {
-                    sonidoError.play();
-                    tarjeta.className = 'tarjeta-resultado error';
-                    titulo.innerText = "¡D'oh!";
-                    mensaje.innerHTML = `
-                        <strong>¡Final Fallido!</strong> Karen hizo clic para "Validar Datos" y ahora los delincuentes tienen su usuario y contraseña corporativa.
-                    `;
-                }
-                controles.innerHTML = `<button class="btn-amarillo" onclick="location.reload()">Reiniciar Entrenamiento</button>`;
+            else if (nivelActual === 3) { // RAFA (GIL)
+                mensaje.innerHTML = esCorrecto ?
+                    `<strong>¡Genio!</strong> Gracias al análisis de **Rafa**, Gil aprendió:<br><br>• <b>Dominio .xyz:</b> Es una estafa clara.<br>• <b>Gobernación:</b> No regalan bonos por SMS.` :
+                    `<strong>¡Estafado!</strong> Gil entregó sus datos por el bono falso de **Rafa**. ¡Vaciaron su cuenta!`;
+                controles.innerHTML = `<p class="puntaje-text">Aciertos: ${aciertos}/${totalNiveles}</p><button class="btn-amarillo" onclick="cargarNivel(4, 'karen.jpeg', '¡Analiza el email de Karen!')">Último Reto</button>`;
             }
-
+            else if (nivelActual === 4) { // KAREN + CIERRE
+                if (aciertos === 4) {
+                    titulo.innerText = "¡Héroe de Springfield!";
+                    mensaje.innerHTML = `<strong>Puntaje Perfecto: ${aciertos}/${totalNiveles}</strong><br><br>¡Felicidades! Gracias al equipo <b>Bunny Bytes G2</b> (Dairo Rafael, Alejandra, Jhosep, Miguel, David y Santiago) ahora eres un experto protegiendo tus datos.`;
+                } else {
+                    titulo.innerText = "¡Hay que estudiar!";
+                    mensaje.innerHTML = `<strong>Puntaje: ${aciertos}/${totalNiveles}</strong><br><br>Caíste en algunas trampas. Te recomendamos el curso de <b>Ciberseguridad de TALENTO TECH</b>. ¡Protégete junto a Rafa, Alejandra, Jhosep, Karen, Miguel, David y Santiago!`;
+                }
+                controles.innerHTML = `<button class="btn-amarillo" onclick="location.reload()">Reiniciar Simulador</button>`;
+            }
             irA('paso-resultado');
         }
 
-        function cargarNivel(nivel, imagen, tituloSim) {
-            nivelActual = nivel;
-            document.getElementById('imagen-celular').src = imagen;
-            document.getElementById('titulo-simulador').innerText = tituloSim;
+        function cargarNivel(n, img, t) {
+            nivelActual = n;
+            document.getElementById('imagen-celular').src = img;
+            document.getElementById('titulo-simulador').innerText = t;
             irA(3);
         }
     </script>
 </body>
 
-</html>
+</html>ß

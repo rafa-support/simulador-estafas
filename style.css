@@ -9,7 +9,6 @@ body,
 html {
     min-height: 100vh;
     overflow-x: hidden;
-    overflow-y: auto;
     font-family: 'Comic Sans MS', 'Chalkboard SE', sans-serif;
     background-color: #1a252f;
     color: white;
@@ -22,7 +21,6 @@ html {
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    width: 100%;
     padding: 30px;
 }
 
@@ -30,109 +28,17 @@ html {
     display: none !important;
 }
 
-/* --- TIPOGRAFÍA --- */
-.texto-gigante {
-    font-size: 2.8rem;
-    color: #fed41d;
-    margin: 15px 0;
-    text-shadow: 2px 2px 0px #000;
-}
-
-.texto-grande {
-    font-size: 2.2rem;
-    margin: 15px 0;
-    color: #fff;
-}
-
-.texto-medio {
-    font-size: 1.6rem;
-    margin: 15px 0;
-    line-height: 1.2;
-}
-
-/* --- ARREGLO DE ESPACIADO (PARA QUE NO SE MONTEN) --- */
-.subtitulo {
+/* --- MARGEN SAGRADO 60PX --- */
+.subtitulo,
+.pregunta-climax {
+    margin-bottom: 60px;
     font-size: 1.4rem;
     color: #bdc3c7;
-    margin-bottom: 60px;
-    /* Suficiente espacio para que no pegue con el botón */
 }
 
-.pregunta-climax {
-    font-size: 1.8rem;
-    color: #fed41d;
-    font-weight: bold;
-    margin-bottom: 60px;
-    /* Suficiente espacio para el botón azul */
-}
-
-.instruccion-pro {
-    font-size: 1.5rem;
-    max-width: 800px;
-    line-height: 1.4;
-    margin: 0 auto;
-    text-align: left;
-    /* Alineación para las viñetas */
-}
-
-/* --- BOTONES --- */
-button {
-    cursor: pointer;
-    font-weight: bold;
-    transition: transform 0.2s, box-shadow 0.2s;
-    font-family: inherit;
-    border: none;
-}
-
-button:hover {
-    transform: scale(1.05);
-}
-
-.btn-amarillo {
-    background-color: #fed41d;
-    color: #000;
-    padding: 20px 45px;
-    font-size: 1.6rem;
-    border-radius: 50px;
-    box-shadow: 0 8px 0 #b49710;
-}
-
-.btn-azul {
-    background: linear-gradient(to bottom, #3498db, #2980b9);
-    color: white;
-    padding: 20px 55px;
-    font-size: 1.6rem;
-    border-radius: 20px;
-    box-shadow: 0 8px 0 #1c5980;
-}
-
-.botones-grupo {
-    display: flex;
-    gap: 25px;
-    justify-content: center;
-    margin-top: 25px;
-}
-
-.btn-vibrante {
-    color: white;
-    border-radius: 50px;
-    padding: 18px 40px;
-    font-size: 1.4rem;
-    box-shadow: 0 10px 0 rgba(0, 0, 0, 0.5);
-}
-
-.btn-peligro {
-    background: #e74c3c;
-}
-
-.btn-seguro {
-    background: #2ecc71;
-}
-
-/* --- IMÁGENES CONTROLADAS --- */
+/* --- RESTRICCIÓN DE ALTURA 40VH (PARA S25 ULTRA) --- */
 .img-principal {
     max-height: 40vh;
-    /* RESTRICCIÓN PARA QUE EL BOTÓN SIEMPRE SE VEA */
     border-radius: 20px;
     border: 5px solid #fed41d;
     margin-bottom: 25px;
@@ -154,6 +60,69 @@ button:hover {
     object-fit: cover;
 }
 
+/* --- BOTONES VIBRANTES (EL REGRESO) --- */
+.botones-grupo {
+    display: flex;
+    gap: 25px;
+    justify-content: center;
+    margin-top: 25px;
+}
+
+.btn-vibrante {
+    border: none;
+    color: white;
+    border-radius: 50px;
+    padding: 18px 45px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: bold;
+    transition: transform 0.1s;
+    /* Sombras 3D y brillo interno que olvidé */
+    box-shadow: 0 10px 0 rgba(0, 0, 0, 0.5), inset 0 2px 5px rgba(255, 255, 255, 0.3);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.btn-peligro {
+    background: linear-gradient(145deg, #e74c3c, #c0392b);
+}
+
+.btn-seguro {
+    background: linear-gradient(145deg, #2ecc71, #27ae60);
+}
+
+.btn-vibrante:active {
+    transform: translateY(4px);
+    box-shadow: 0 5px 0 rgba(0, 0, 0, 0.5), inset 0 2px 5px rgba(255, 255, 255, 0.3);
+}
+
+/* --- BOTONES DE INTERFAZ --- */
+.btn-amarillo {
+    background-color: #fed41d;
+    color: #000;
+    padding: 20px 45px;
+    font-size: 1.6rem;
+    border-radius: 50px;
+    box-shadow: 0 8px 0 #b49710;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: bold;
+}
+
+.btn-azul {
+    background: #3498db;
+    color: white;
+    padding: 20px 50px;
+    font-size: 1.6rem;
+    border-radius: 20px;
+    box-shadow: 0 8px 0 #1c5980;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: bold;
+}
+
 /* --- RESULTADOS --- */
 .tarjeta-resultado {
     padding: 40px;
@@ -164,27 +133,36 @@ button:hover {
 
 .exito {
     background-color: #2ecc71;
-    box-shadow: 0 0 50px rgba(46, 204, 113, 0.5);
 }
 
 .error {
     background-color: #e74c3c;
-    box-shadow: 0 0 50px rgba(231, 76, 60, 0.5);
 }
 
-/* --- RESPONSIVE --- */
+.puntaje-text {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #fed41d;
+    margin-bottom: 15px;
+    text-shadow: 1px 1px 0 #000;
+}
+
+.instruccion-pro {
+    font-size: 1.5rem;
+    max-width: 800px;
+    line-height: 1.4;
+    margin: 0 auto;
+    text-align: left;
+}
+
 @media (max-width: 600px) {
-    .texto-gigante {
-        font-size: 1.8rem;
-    }
-
-    .img-principal,
-    .marco-celular {
-        height: 32vh;
-    }
-
     .botones-grupo {
         flex-direction: column;
+        width: 100%;
         align-items: center;
+    }
+
+    .btn-vibrante {
+        width: 90%;
     }
 }
